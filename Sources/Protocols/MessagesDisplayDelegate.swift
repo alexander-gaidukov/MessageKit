@@ -159,7 +159,9 @@ public extension MessagesDisplayDelegate {
     }
 
     func messageFooterView(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageFooterView {
-        return messagesCollectionView.dequeueReusableFooterView(MessageFooterView.self, for: indexPath)
+        let footer = messagesCollectionView.dequeueReusableFooterView(MessageFooterView.self, for: indexPath)
+        footer.dateLabel.text = MessageKitDateFormatter.shared.string(from: message.sentDate)
+        return footer
     }
 
 }

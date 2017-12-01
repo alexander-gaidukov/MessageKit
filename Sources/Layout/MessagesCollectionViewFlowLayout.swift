@@ -199,6 +199,7 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
             if attributes.representedElementCategory == UICollectionElementCategory.cell {
                 configure(attributes: attributes)
             }
+            attributes.transform = CGAffineTransform(rotationAngle: -(.pi))
         }
 
         return attributesArray
@@ -211,6 +212,8 @@ open class MessagesCollectionViewFlowLayout: UICollectionViewFlowLayout {
         if attributes.representedElementCategory == UICollectionElementCategory.cell {
             configure(attributes: attributes)
         }
+        
+        attributes.transform = CGAffineTransform(rotationAngle: -(.pi))
 
         return attributes
 
