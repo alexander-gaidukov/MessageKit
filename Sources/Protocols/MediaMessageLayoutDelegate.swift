@@ -50,10 +50,16 @@ public protocol MediaMessageLayoutDelegate: MessagesLayoutDelegate {
     /// The default value returned by this method uses `AVMakeRect(aspectRatio:insideRect:)` with a bounding
     /// rect using the `maxWidth` and `.greatestFiniteMagnitude` for the height.
     func heightForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat
+    
+    func contentModeForMedia(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIViewContentMode
 
 }
 
 public extension MediaMessageLayoutDelegate {
+    
+    func contentModeForMedia(message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIViewContentMode {
+        return .center
+    }
 
     func widthForMedia(message: MessageType, at indexPath: IndexPath, with maxWidth: CGFloat, in messagesCollectionView: MessagesCollectionView) -> CGFloat {
         return maxWidth

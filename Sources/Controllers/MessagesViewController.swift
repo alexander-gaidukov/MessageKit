@@ -231,6 +231,9 @@ extension MessagesViewController: UICollectionViewDataSource {
             return cell
         case .photo, .video:
     	    let cell = messagesCollectionView.dequeueReusableCell(MediaMessageCell.self, for: indexPath)
+            if let delegate = messagesCollectionView.messagesLayoutDelegate as? MediaMessageLayoutDelegate {
+                cell.messageContentView.contentMode = delegate.contentModeForMedia(message: message, at: indexPath, in: messagesCollectionView)
+            }
             cell.configure(with: message, at: indexPath, and: messagesCollectionView)
             return cell
         case .location:
